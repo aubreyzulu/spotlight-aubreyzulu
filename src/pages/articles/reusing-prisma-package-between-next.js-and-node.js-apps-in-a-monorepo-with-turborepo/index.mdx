@@ -1,0 +1,191 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+export const meta = {
+  author: 'Aubrey Zulu',
+  date: '2024-07-28',
+  title:
+    'Reusing Prisma Package Between Next.js and Node.js Apps in a Monorepo with Turborepo',
+  description:
+    'Discover how to share a Prisma package between Next.js and Node.js (Express) apps in a monorepo using Turborepo. This guide covers setup, configuration, and integration for streamlined database management and centralized updates. Ideal for optimizing your development workflow',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+**Introduction**
+
+In modern web development, monorepos are increasingly popular for managing multiple projects within a single repository. They simplify dependencies, code sharing, and overall project maintenance. Turborepo is a powerful tool designed for managing monorepos efficiently. This guide will walk you through setting up a monorepo using Turborepo to share a Prisma package between a Next.js app and a Node.js (Express) app.
+
+**What is Turborepo?**
+
+Turborepo is a high-performance build system for JavaScript and TypeScript codebases. It offers several advantages for managing monorepos, including:
+
+- **Efficient Builds**: Turborepo optimizes build times using caching and parallel execution.
+  Code Sharing: Easily share code and dependencies across multiple projects within the same repository.
+- **Unified Configuration**: Manage configurations in a centralized manner, reducing duplication and inconsistency.
+
+**Why Share Prisma?**
+
+Prisma is a modern ORM (Object-Relational Mapping) tool for Node.js and TypeScript that simplifies database management. Sharing Prisma between a Next.js app and a Node.js (Express) app in a monorepo can be beneficial for several reasons:
+
+- **Consistency:** Ensure both applications use the same database schema and configurations.
+- **DRY Principle:** Avoid duplicating Prisma configurations and models, adhering to the "Don't Repeat Yourself" principle.
+- **Centralized Updates:** Update database schema and models in one place, automatically reflecting changes across both applications.
+
+## Step-by-Step Guide
+
+1. **Setup Turborepo**
+
+First, initialize a new monorepo using Turborepo.
+
+1. **Initialize a new Turborepo workspace:**
+
+```bash
+
+npx create-turbo@latest
+cd my-turbo-repo
+```
+
+**Follow the prompts to set up your monorepo structure**. Ensure you have separate folders for your Next.js and Express apps, and one for shared packages.
+
+2. **Setup Prisma Package**
+   Create a new package for Prisma:
+
+```bash
+
+mkdir -p packages/prisma
+cd packages/prisma
+npm init -y
+
+```
+
+Install Prisma and initialize it:
+
+```bash
+
+npm install prisma @prisma/client
+npx prisma init
+
+```
+
+Configure your Prisma schema in packages/prisma/prisma/schema.prisma to define your data models.
+
+Set up a shared Prisma client:
+Create a file packages/prisma/client.ts:
+
+```typescript
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+export default prisma
+```
+
+3. Configure Next.js App
+   Navigate to your Next.js app directory:
+
+```bash
+
+cd apps/nextjs-app
+
+```
+
+Install Prisma client:
+
+```bash
+
+npm install @prisma/client
+
+```
+
+Reference the shared Prisma client:
+
+```typescript
+// Import the shared Prisma client in your Next.js app
+import prisma from 'packages/prisma/client'
+
+// Example usage in an API route
+export default async function handler(req, res) {
+  const users = await prisma.user.findMany()
+  res.json(users)
+}
+```
+
+4. Configure Node.js (Express) App
+   Navigate to your Express app directory:
+
+```bash
+
+cd apps/express-app
+
+```
+
+Install Prisma client:
+
+```bash
+
+npm install @prisma/client
+
+```
+
+Reference the shared Prisma client:
+
+```javascript
+// Import the shared Prisma client in your Express app
+const prisma = require('packages/prisma/client')
+
+// Example usage in an endpoint
+app.get('/users', async (req, res) => {
+  const users = await prisma.user.findMany()
+  res.json(users)
+})
+```
+
+5. Configure Turborepo
+   Modify the Turborepo configuration in turbo.json to link the Prisma package with both the Next.js and Express apps:
+
+```json
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "dist/**"]
+    },
+    "dev": {
+      "dependsOn": ["^build", "@prisma/client"]
+    }
+  }
+}
+```
+
+Set up your package.json workspaces:
+
+```json
+{
+  "workspaces": ["apps/*", "packages/*"]
+}
+```
+
+6. Run the Monorepo
+   Install all dependencies:
+
+```bash
+
+npm install
+
+```
+
+Generate Prisma Client:
+
+```bash
+
+npx prisma generate
+```
+
+Start the development server:
+
+```bash
+
+npm run dev
+
+```
+
+With this setup, you have successfully configured a monorepo using Turborepo to share a Prisma package between a Next.js app and a Node.js (Express) app. This approach ensures consistency, adheres to the DRY principle, and simplifies centralized updates across your applications.
