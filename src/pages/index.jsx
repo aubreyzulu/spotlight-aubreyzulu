@@ -242,16 +242,18 @@ export default function Home({ articles }) {
             Full-stack Software Developer
           </h1>
           <p className="prose mt-6 dark:prose-invert">
-            Specializing in payment gateway integration, with deep expertise in
-            Stripe and Paystack implementations. Skilled in building secure,
-            scalable solutions using React.js, Node.js, and React Native for web
-            and mobile platforms.
+            With extensive experience in building SaaS platforms, data-driven
+            applications, and mobile apps using React Native, React.js, and
+            Node.js. I have a proven track record of integrating payment
+            gateways, including Stripe and Paystack, within SaaS applications,
+            optimizing payment flows, and enhancing user experiences across
+            various devices.
           </p>
-          <p className="prose mt-6 dark:prose-invert">
+          {/* <p className="prose mt-6 dark:prose-invert">
             Experienced in optimizing payment flows and creating seamless user
             experiences across devices. Proficient in both frontend and backend
             development.
-          </p>
+          </p> */}
           {/* <p className="prose mt-6 dark:prose-invert">
             Lead Developer with a proven track record of mentoring teams and
             delivering reliable, innovative solutions. Committed to driving
