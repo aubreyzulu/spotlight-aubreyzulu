@@ -74,35 +74,43 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              Hi, I'm Aubrey, a dedicated Software Engineer passionate about
-              crafting elegant solutions in multiple programming languages.
+              Hi, I'm Aubrey, a Software Engineer driven by a passion for
+              solving complex problems and fostering innovation through
+              collaboration.
             </h1>
             <div className="prose mt-6 space-y-7 text-lg text-zinc-600 dark:prose-invert dark:text-zinc-400">
               <p>
-                In the dynamic and ever-evolving realm of technology, I have
-                found my niche at the crossroads of innovation, creativity, and
-                purpose. As a seasoned software engineer, my journey is woven
-                with a rich tapestry of projects that reflect both my depth of
-                knowledge and my breadth of experience. I pride myself on
-                mastering diverse technologies, from the intricate dance of
-                React's reactivity to the structured elegance of Python and C#'s
-                logic.
+                Throughout my career, I’ve consistently sought out challenges
+                that require creative thinking and innovative solutions. My
+                approach to software development is rooted in the belief that
+                the best results come from teamwork and diverse perspectives.
+                Whether tackling intricate algorithms or designing user-friendly
+                interfaces, I thrive on collaborating with others to turn ideas
+                into reality.
               </p>
               <p>
-                For me, every line of code tells a story. Each function and
-                algorithm is a chapter in a larger narrative of solving
-                real-world challenges, optimizing user experiences, and pushing
-                the boundaries of what's possible. Beyond the code, I cherish
-                the collaborative spirit of this industry. I believe in the
-                power of diverse teams, where each member brings a unique
-                perspective, and together, we craft digital masterpieces.
+                Problem-solving is at the heart of what I do. Each project
+                presents a unique puzzle, and I’m dedicated to finding the most
+                efficient and effective solutions. From integrating cutting-edge
+                technologies to refining existing systems, I focus on delivering
+                results that are not only functional but also scalable and
+                sustainable.
               </p>
               <p>
-                "Exploring my portfolio will reveal a combination of technical
-                expertise, strategic thinking, and a commitment to excellence.
-                Whether you're here to collaborate, learn, or simply explore,
-                you'll witness the passion and dedication that drive every
-                project I undertake."
+                Innovation isn’t just about the latest technology—it’s about
+                applying fresh thinking to deliver better outcomes. I pride
+                myself on staying curious and continuously learning, ensuring
+                that I bring the most up-to-date knowledge and practices to
+                every project. But I know that true innovation happens when
+                great minds work together, which is why I value collaboration
+                and teamwork as essential elements of my process.
+              </p>
+              <p>
+                As you explore my portfolio, you’ll see how problem-solving,
+                innovation, and collaboration come together in the work I do.
+                Whether you’re here to collaborate, share ideas, or simply learn
+                more, I’m excited to connect and create solutions that make a
+                difference.
               </p>
             </div>
           </div>
